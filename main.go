@@ -14,6 +14,7 @@ func main() {
 	logLevelPtr := flag.String("logLevel", "info", "Log level")
 	versionPtr := flag.Bool("version", false, "Display version and exit")
 	debugPtr := flag.Bool("debug", false, "Interactive debug prompts")
+	tagPrefix := flag.String("tagPrefix", "GOAT-IN", "Prefix for GOAT related tags")
 
 	flag.Parse()
 
@@ -38,9 +39,9 @@ func main() {
 
 	log.Printf("Running goat for %s", command)
 	if command == "ebs" {
-		GoatEbs(*debugPtr)
+		GoatEbs(*debugPtr, *tagPrefix)
 	} else if command == "eni" {
-		GoatEni(*debugPtr)
+		GoatEni(*debugPtr, *tagPrefix)
 	} else {
 		log.Fatalf("Unrecognized command: %s", command)
 	}
