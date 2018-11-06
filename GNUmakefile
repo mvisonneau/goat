@@ -4,7 +4,7 @@ GOAT_FILES?=$$(find . -name '*.go' | grep -v vendor)
 
 all: build
 
-build: deps
+build:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w -extldflags "-static" -X main.VERSION=$(VERSION)' -o bin/$(NAME)
 	strip bin/$(NAME)
 
